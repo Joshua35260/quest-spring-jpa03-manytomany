@@ -1,10 +1,15 @@
 package com.wildcodeschool.wildandwizard.entity;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.sql.Date;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Wizard {
@@ -18,6 +23,9 @@ public class Wizard {
     private String birthPlace;
     private String biography;
     private boolean muggle;
+
+    @OneToMany(mappedBy = "wizard", cascade = CascadeType.ALL)
+    private List<Course> courses = new ArrayList<>();
 
     public Wizard() {
     }
